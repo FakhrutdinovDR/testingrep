@@ -14,6 +14,11 @@ async def proccesing_start_answer(message: Message):
 async def proccessing_photo(message: Message):
     await message.answer_photo(photo=message.photo[0].file_id)
 
+@dp.message(F.sticker)
+async def proccesing_sticker_answer(message: Message):
+    print(message.json(exclude_none=True))
+    await message.reply_sticker(sticker=message.sticker.file_id)
+
 @dp.message()
 async def proccessing_anything(message: Message):
     await message.answer_photo(photo='https://www.meme-arsenal.com/memes/087f286f5440d6fb308d063d5646a204.jpg')
